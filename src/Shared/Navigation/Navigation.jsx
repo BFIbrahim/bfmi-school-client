@@ -17,12 +17,12 @@ const Navigation = () => {
                             <li><a>Item 3</a></li>
                         </ul>
                     </div>
-                    <a className="btn btn-ghost normal-case text-xl"><span className='text-orange-400'>BFMI</span> School</a>
+                    <Link className="btn btn-ghost normal-case text-xl"><span className='text-orange-400'>BFMI</span> School</Link>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link>Instractors</Link></li>
+                        <li><Link to="/instractor">Instractors</Link></li>
                         <li><Link>Classess</Link></li>
                         <li><Link>Dashbord</Link></li>
                     </ul>
