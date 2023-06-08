@@ -1,11 +1,21 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
+import { AuthContext } from '../../Providers/AuthProviders';
 
 
 const Registration = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+    const {createUser} = useContext(AuthContext)
+
+
+    const onSubmit = data => {
+        createUser(data.email, data.password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+        })
+    };
     return (
         <div>
             <h1 className='pt-24 text-4xl text-center font-bold'>Please Register</h1>
@@ -39,12 +49,10 @@ const Registration = () => {
                                     required: true, 
                                     minLength: 6, 
                                     maxLength: 20,
-                                    pattern: /^(?=.*\d)(?=.*[!@#$%^&*])(?=.*[a-z])(?=.*[A-Z])$/
                                     
                                     })} name='password' placeholder="password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className='text-red-600'>Password required</p>}
                                 {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be at last 6 caracters</p>}
-                                {errors.password?.type === 'pattern' && <p className='text-red-600'>Please make a strong password</p>}
 
 
                             </div>
