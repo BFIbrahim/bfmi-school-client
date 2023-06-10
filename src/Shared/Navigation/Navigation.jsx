@@ -33,7 +33,7 @@ const Navigation = () => {
                     <ul className="menu menu-horizontal px-1">
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to="/instractor">Instractors</Link></li>
-                        <li><Link>Classess</Link></li>
+                        <li><Link to="/class">Classess</Link></li>
                         <li><Link>Dashbord</Link></li>
                     </ul>
                 </div>
