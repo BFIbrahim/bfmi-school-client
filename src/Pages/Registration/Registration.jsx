@@ -8,12 +8,12 @@ const Registration = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const {createUser} = useContext(AuthContext)
 
-
     const onSubmit = data => {
         createUser(data.email, data.password)
         .then(result => {
             const user = result.user;
-            console.log(user);
+            alert('Registration Successfull')
+            data.reset()
         })
     };
     return (
@@ -25,7 +25,7 @@ const Registration = () => {
                     <div className="text-center lg:text-left">
                         <img src="https://cdni.iconscout.com/illustration/premium/thumb/online-registration-8145509-6556891.png?f=webp" alt="" />
                     </div>
-                    <div className="card flex-shrink-0 w-full md:max-w-sm shadow-2xl bg-base-100">
+                    <div className="mb-5 card flex-shrink-0 w-full md:max-w-sm shadow-2xl bg-base-100">
                         <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                             <div className="form-control">
                                 <label className="label">

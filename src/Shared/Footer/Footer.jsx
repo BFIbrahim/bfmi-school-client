@@ -24,7 +24,7 @@ const Footer = () => {
             </footer>
             <footer className="footer footer-center p-4 bg-gray-900 text-white">
                 <div>
-                    <p>Copyright © 2023 - All right reserved by ACME Industries Ltd</p>
+                    <p>Copyright © 2023 - All right reserved by BFMI School</p>
                 </div>
             </footer>
         </div>

@@ -1,10 +1,17 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
+import { GoogleAuthProvider } from 'firebase/auth';
 
 const Login = () => {
 
-    const {loginUser} = useContext(AuthContext)
+    const {loginUser, googleSignin} = useContext(AuthContext)
+    const provider = new GoogleAuthProvider()
+
+    const googleLogin = event => {
+        event.preventDefault();
+        googleSignin(provider)
+    }
 
     const hundleLogin = event => {
         event.preventDefault();
@@ -15,7 +22,8 @@ const Login = () => {
         loginUser(email, password)
         .then(result =>{
             const user = result.user;
-            console.log(user);
+            alert('Login Successfull');
+            form.reset()
         })
 
 
@@ -47,11 +55,9 @@ const Login = () => {
                             <div className="form-control mt-6">
                                 <button className="btn bg-orange-400 text-white">Login</button>
                             </div>
+
                             <p className='text-center'>or</p>
-                            <button className=''>
-                                <img className='w-20 mx-auto' src="https://cdn.mos.cms.futurecdn.net/mkXgKuGBww7TQUASvxRxmR-1200-80.jpg" alt="" />
-                            </button>
-                            <p className='text-center'>New In BFMI School? <Link to="/registration" className='text-orange-400'>PLease Register</Link></p>
+                                <button><img onClick={googleLogin} className='w-20 mx-auto' src="https://cdn.mos.cms.futurecdn.net/mkXgKuGBww7TQUASvxRxmR-1200-80.jpg" alt="" /></button>                            <p className='text-center'>New In BFMI School? <Link to="/registration" className='text-orange-400'>PLease Register</Link></p>
                         </form>
                     </div>
                 </div>

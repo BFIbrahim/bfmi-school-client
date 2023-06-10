@@ -6,7 +6,11 @@ import { AuthContext } from '../../Providers/AuthProviders';
 
 const Navigation = () => {
 
-    const { user } = useContext(AuthContext)
+    const {logout, user } = useContext(AuthContext)
+
+    const signOut = () => {
+        logout()
+    }
 
     return (
         <div className='max-w-5xl mx-auto navbar fixed z-10 bg-opacity-40 bg-gray-800 text-white'>
@@ -38,7 +42,7 @@ const Navigation = () => {
                     {user ? <>
                         <img className='w-10 rounded-full me-6' src="https://i.postimg.cc/mrXK9cZ4/pngtree-businessman-user-avatar-free-vector-png-image-1538405-2.jpg" alt="" />
 
-                        <Link className="btn bg-orange-400 border-none text-white">Logout</Link>
+                        <Link onClick={signOut} className="btn bg-orange-400 border-none text-white">Logout</Link>
                     </> :
 
                         <>
