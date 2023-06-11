@@ -6,14 +6,30 @@ const HomeClasses = () => {
     const [classesData, setClasses] = useState([])
     const [loading, setLoading] = useState(true)
 
+    // useEffect(() => {
+    //     fetch('http://localhost:5000/class')
+    //         .then(res => res.json())
+    //         .then(data => {
+    //             setClasses(data);
+    //             setLoading(false)
+    //         })
+    // }, [])
+
     useEffect(() => {
-        fetch('http://localhost:5000/class')
-            .then(res => res.json())
-            .then(data => {
-                setClasses(data);
-                setLoading(false)
-            })
-    }, [])
+        const loadedClass = async () => {
+          try {
+            const response = await fetch('http://localhost:5000/classes');
+            const jsonData = await response.json();
+            const sortedClass = jsonData.sort((x, y) => x.Available_seats - y.Available_seats);
+            const topSixClass = sortedClass.slice(0, 6);
+            console.log(topSixClass);
+            setClasses(topSixClass);
+          } catch (error) {
+            console.error('Error fetching data:', error);
+          }
+        };
+        loadedClass();
+      }, []);
 
 
     return (

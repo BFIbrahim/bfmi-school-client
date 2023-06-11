@@ -1,12 +1,16 @@
 import React, { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../Providers/AuthProviders';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
 
 const Login = () => {
 
-    const {loginUser, googleSignin} = useContext(AuthContext)
+    const { loginUser, googleSignin } = useContext(AuthContext)
     const provider = new GoogleAuthProvider()
+    const navigate = useNavigate()
+    const location = useLocation
 
     const googleLogin = event => {
         event.preventDefault();
@@ -20,17 +24,28 @@ const Login = () => {
         const password = form.password.value;
         console.log(form, email, password);
         loginUser(email, password)
-        .then(result =>{
-            const user = result.user;
-            alert('Login Successfull');
-            form.reset()
-        })
+            .then(result => {
+                const user = result.user;
+                    Swal.fire({
+                        position: 'top-center',
+                        icon: 'success',
+                        title: 'Login Successfull',
+                        showConfirmButton: false,
+                        timer: 1500
+                })
+                form.reset()
+            })
 
 
     }
 
     return (
         <div>
+
+            <Helmet>
+                <title>Login || BFMI School</title>
+            </Helmet>
+
             <h1 className='pt-24 text-4xl text-center font-bold'>Please LogIn</h1>
 
             <div className="hero min-h-screen mx-auto">
@@ -57,7 +72,7 @@ const Login = () => {
                             </div>
 
                             <p className='text-center'>or</p>
-                                <button><img onClick={googleLogin} className='w-20 mx-auto' src="https://cdn.mos.cms.futurecdn.net/mkXgKuGBww7TQUASvxRxmR-1200-80.jpg" alt="" /></button>                            <p className='text-center'>New In BFMI School? <Link to="/registration" className='text-orange-400'>PLease Register</Link></p>
+                            <button><img onClick={googleLogin} className='w-20 mx-auto' src="https://cdn.mos.cms.futurecdn.net/mkXgKuGBww7TQUASvxRxmR-1200-80.jpg" alt="" /></button>                            <p className='text-center'>New In BFMI School? <Link to="/registration" className='text-orange-400'>PLease Register</Link></p>
                         </form>
                     </div>
                 </div>

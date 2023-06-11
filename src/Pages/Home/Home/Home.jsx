@@ -1,14 +1,19 @@
 import React from 'react';
 import Banner from '../Banner/Banner';
 import HomeClasses from '../HomeClasses/HomeClasses';
+import { Helmet } from 'react-helmet-async';
 
 const Home = () => {
     return (
         <div>
-           <Banner></Banner>
-           <HomeClasses></HomeClasses>
+            <Helmet>
+                <title>Home || BFMI School</title>
+            </Helmet>
+
+            <Banner></Banner>
+            <HomeClasses></HomeClasses>
         </div>
-    
+
     );
 };
 

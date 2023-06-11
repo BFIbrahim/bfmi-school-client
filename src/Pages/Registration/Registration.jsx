@@ -2,22 +2,34 @@ import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Providers/AuthProviders';
+import { Helmet } from 'react-helmet-async';
 
 
 const Registration = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const {createUser} = useContext(AuthContext)
+    const { createUser } = useContext(AuthContext)
 
     const onSubmit = data => {
         createUser(data.email, data.password)
-        .then(result => {
-            const user = result.user;
-            alert('Registration Successfull')
-            data.reset()
-        })
+            .then(result => {
+                const user = result.user;
+                Swal.fire({
+                    position: 'top-end',
+                    icon: 'success',
+                    title: 'Registration Successfull',
+                    showConfirmButton: false,
+                    timer: 1500
+                })
+
+                data.reset()
+            })
     };
     return (
         <div>
+            <Helmet>
+                <title>Registration || BFMI School</title>
+            </Helmet>
+
             <h1 className='pt-24 text-4xl text-center font-bold'>Please Register</h1>
 
             <div className="hero min-h-screen">
@@ -31,26 +43,26 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Name</span>
                                 </label>
-                                <input type="name" {...register("name", { required: true })}name='name' placeholder="Name" className="input input-bordered" />
+                                <input type="name" {...register("name", { required: true })} name='name' placeholder="Name" className="input input-bordered" />
                                 {errors.name && <span className='text-red-600'>* name is required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Email</span>
                                 </label>
-                                <input type="email" {...register("email",{ required: true})} placeholder="email" className="input input-bordered" />
+                                <input type="email" {...register("email", { required: true })} placeholder="email" className="input input-bordered" />
                                 {errors.name && <span className='text-red-600'>* Email required</span>}
                             </div>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Password</span>
                                 </label>
-                                <input type="password" {...register("password",{ 
-                                    required: true, 
-                                    minLength: 6, 
+                                <input type="password" {...register("password", {
+                                    required: true,
+                                    minLength: 6,
                                     maxLength: 20,
-                                    
-                                    })} name='password' placeholder="password" className="input input-bordered" />
+
+                                })} name='password' placeholder="password" className="input input-bordered" />
                                 {errors.password?.type === 'required' && <p className='text-red-600'>Password required</p>}
                                 {errors.password?.type === 'minLength' && <p className='text-red-600'>Password must be at last 6 caracters</p>}
 
@@ -61,7 +73,7 @@ const Registration = () => {
                                 <label className="label">
                                     <span className="label-text">Confirm Password</span>
                                 </label>
-                                <input type="password" {...register("confirmPassword",{ required: true})} name='confirmPassword' placeholder="Confirm PAssword" className="input input-bordered" />
+                                <input type="password" {...register("confirmPassword", { required: true })} name='confirmPassword' placeholder="Confirm PAssword" className="input input-bordered" />
                                 {errors.name && <span className='text-red-600'>* Confirm Password required</span>}
                             </div>
                             <div className="form-control">

@@ -1,23 +1,28 @@
 import React, { useEffect, useState } from 'react';
 import SingleClassCard from './SingleClassCard';
+import { Helmet} from 'react-helmet-async';
+
 import './classes.css'
 
 const Classes = () => {
     const [classesData, setClasses] = useState([])
-    const [loading, setLoading] = useState(true)
+    // const [loading, setLoading] = useState(true)
 
     useEffect(() => {
         fetch('http://localhost:5000/classes')
             .then(res => res.json())
             .then(data => {
                 setClasses(data);
-                setLoading(false)
+                // setLoading(false)
             })
     }, [])
 
 
     return (
         <div>
+            <Helmet>
+                <title>Classes || BFMI School</title>
+            </Helmet>
             <div className="hero h-96 class-top">
                 <div className="hero-overlay bg-opacity-60"></div>
                 <div className="hero-content text-center text-neutral-content">
