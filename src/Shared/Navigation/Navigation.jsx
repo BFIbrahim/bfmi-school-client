@@ -6,7 +6,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 
 const Navigation = () => {
 
-    const {logout, user } = useContext(AuthContext)
+    const { logout, user } = useContext(AuthContext)
 
     const signOut = () => {
         logout()
@@ -23,8 +23,8 @@ const Navigation = () => {
                         <ul tabIndex={0} className="menu menu-sm dropdown-content mt-3 p-2 shadow bg-base-100 rounded-box w-52 text-black">
                             <li><Link to='/'>Home</Link></li>
                             <li><Link to="/instractor">Instractors</Link></li>
-                            <li><Link>Classess</Link></li>
-                            <li><Link>Dashbord</Link></li>
+                            <li><Link to="/class">Classess</Link></li>
+                            <li><Link to="/dasbord">Dashbord</Link></li>
                         </ul>
                     </div>
                     <Link className="btn btn-ghost normal-case text-xl"><span className='text-orange-400'>BFMI</span> School</Link>
@@ -34,7 +34,7 @@ const Navigation = () => {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to="/instractor">Instractors</Link></li>
                         <li><Link to="/class">Classess</Link></li>
-                        <li><Link to="/dasbord">Dashbord</Link></li>
+                        <li><Link to="/dasbord/myclass">Dashbord</Link></li>
                     </ul>
                 </div>
                 <div className="navbar-end">
