@@ -3,7 +3,7 @@ import { AuthContext } from '../../Providers/AuthProviders';
 import Swal from 'sweetalert2';
 import { useLocation, useNavigate } from 'react-router-dom';
 
-const SingleClassCard = ({ classes }) => {
+const SingleClassCard = ({classes}) => {
     console.log(classes);
     const { user } = useContext(AuthContext)
     console.log(user);

@@ -12,6 +12,7 @@ const Login = () => {
     const navigate = useNavigate()
     const location = useLocation
 
+
     const googleLogin = event => {
         event.preventDefault();
         googleSignin(provider)
