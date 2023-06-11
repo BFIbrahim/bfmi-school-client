@@ -6,11 +6,11 @@ import { useLocation, useNavigate } from 'react-router-dom';
 const SingleClassCard = ({ classes }) => {
     console.log(classes);
     const { user } = useContext(AuthContext)
+    console.log(user);
     const navigate = useNavigate()
 
     const {_id, Name, Image, Instructor_name, Available_seats, Price} = classes;
     const hundleSelect = (classes) => {
-        console.log(classes);
         if (user && user.email) {
             const selectedclass = {selecytrdClass: _id, Name, Image, Instructor_name, Available_seats, Price, email: user.email}
             fetch('http://localhost:5000/selectedClass', {
