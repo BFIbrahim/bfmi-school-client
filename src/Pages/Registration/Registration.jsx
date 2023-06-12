@@ -1,27 +1,47 @@
 import React, { useContext, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { useForm } from "react-hook-form";
 import { AuthContext } from '../../Providers/AuthProviders';
 import { Helmet } from 'react-helmet-async';
+import Swal from 'sweetalert2';
+import SocialLogin from '../../Shared/SocialLogin';
 
 
 const Registration = () => {
     const { register, handleSubmit, formState: { errors } } = useForm();
     const { createUser } = useContext(AuthContext)
+    const navigate = useLocation()
 
     const onSubmit = data => {
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                Swal.fire({
-                    position: 'top-end',
-                    icon: 'success',
-                    title: 'Registration Successfull',
-                    showConfirmButton: false,
-                    timer: 1500
-                })
 
-                data.reset()
+                const saveUser = {name: data.name, email: data.email}
+
+                fetch('http://localhost:5000/users', {
+                    method: 'POST',
+                    headers:{
+                        'content-type' : 'application/json'
+                    },
+                    body: JSON.stringify(saveUser)
+                    
+
+                })
+                    .then(res => res.json())
+                    .then(data => {
+                        if (data.insertedId) {
+                            Swal.fire({
+                                position: 'top-center',
+                                icon: 'success',
+                                title: 'Registration Successfull',
+                                showConfirmButton: false,
+                                timer: 1500
+                            })
+
+                         navigate('/')
+                        }
+                    })
             })
     };
     return (
@@ -85,6 +105,8 @@ const Registration = () => {
                             <div className="form-control mt-6">
                                 <button className="btn bg-orange-400 text-white">Register</button>
                             </div>
+
+                            <SocialLogin></SocialLogin>
                             <p className='text-center'>You Have Already An Account? <Link to="/login" className='text-orange-400'>PLease Login</Link></p>
                         </form>
                     </div>
