@@ -2,8 +2,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import SelectedClassData from '../../Hooks/SelectedClassData';
 import { NavLink, Outlet } from 'react-router-dom';
+import { FaHome, FaList, FaWallet, FaUser, FaBook, FaCheck, FaUserEdit, FaBookOpen } from 'react-icons/fa';
 
 const Dashbord = () => {
+
+    const isAdmin = true;
+
 
     const [classes] = SelectedClassData()
 
@@ -33,19 +37,30 @@ const Dashbord = () => {
                     <label htmlFor="my-drawer-2" className="drawer-overlay"></label>
                     <ul className="menu p-4 w-80 h-full bg-orange-400 text-base-content">
                         {/* Sidebar content here */}
-                        <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/myclass'><img className='w-5' src="https://i.postimg.cc/J7f3dMkV/accept.png" alt="" /> My Selected Classes</NavLink></li>
 
-                        <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/enrolledclass'><img className='w-5' src="https://i.postimg.cc/GpHsmD18/books-stack-of-three.png" alt="" /> My Enrolled Classes</NavLink></li>
+                        {
+                            isAdmin ? <>
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/myclass'><FaBookOpen></FaBookOpen>Manage Classes</NavLink></li>
 
-                        <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/pyment'><img className='w-5' src="https://i.postimg.cc/vHsqxYTH/wallet-filled-money-tool.png" alt="" /> Pyment</NavLink></li>
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/allusers'><FaUserEdit></FaUserEdit>Manage Users</NavLink></li>
+
+                            </> : <>
+
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/myclass'><FaCheck></FaCheck> My Selected Classes</NavLink></li>
+
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/enrolledclass'><FaBook></FaBook> My Enrolled Classes</NavLink></li>
+
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/pyment'><FaWallet></FaWallet> Pyment</NavLink></li>
+                            </>
+                        }
 
                         <div className="divider"></div>
 
-                        <li className='font-semibold text-[14px] text-white'><NavLink to='/'><img className='w-5' src="https://i.postimg.cc/1XkKGZpS/home.png" alt="" />Home</NavLink></li>
+                        <li className='font-semibold text-[14px] text-white'><NavLink to='/'><FaHome></FaHome> Home</NavLink></li>
 
-                        <li className='font-semibold text-[14px] text-white'><NavLink to='/class'><img className='w-5' src="https://i.postimg.cc/kg0B7g7q/to-do-list.png" alt="" /> Classes</NavLink></li>
+                        <li className='font-semibold text-[14px] text-white'><NavLink to='/class'><FaList></FaList> Classes</NavLink></li>
 
-                        <li className='font-semibold text-[14px] text-white'><NavLink to='/instractor'><img className='w-5' src="https://i.postimg.cc/DZKJPyNB/male.png" alt="" /> Instractor</NavLink></li>
+                        <li className='font-semibold text-[14px] text-white'><NavLink to='/instractor'><FaUser></FaUser> Instractors</NavLink></li>
 
                     </ul>
 

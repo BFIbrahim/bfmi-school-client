@@ -1,6 +1,7 @@
 import React from 'react';
 import SelectedClassData from '../../Hooks/SelectedClassData';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const MyClasses = () => {
 
@@ -9,7 +10,7 @@ const MyClasses = () => {
     const total = classes.reduce((sum, item) => item.Price + sum, 0)
 
     const hundleDelete = sClass => {
-        
+
         console.log(sClass);
         Swal.fire({
             title: 'Are you sure?',
@@ -41,8 +42,11 @@ const MyClasses = () => {
 
     return (
         <div className='w-full md:ps-4'>
+            <Helmet>
+                <title>My Classes || BFMI School</title>
+            </Helmet>
             <div className='flex justify-evenly items-center mt-8 bg-orange-400 p-2 rounded-sm font-semibold text-white'>
-                <h3 className=''>Total Class: {classes.length}</h3>
+                <h3 className=''>Total Classes: {classes.length}</h3>
                 <h3 className=''>Total Price: {total}</h3>
 
                 <button className="btn btn-sm bg-white">chekout</button>
@@ -87,9 +91,9 @@ const MyClasses = () => {
                                 <td>
                                     <strong>{sClass.Price}</strong>
                                 </td>
-                                {/* <td>
-                                    <button className="btn btn-ghost btn-xs">pay</button>
-                                </td> */}
+                                <td>
+                                    <button className="btn btn-ghost btn-xs bg-orange-400 text-white hover:text-black">pay</button>
+                                </td>
                                 <td>
                                     <button onClick={() => hundleDelete(sClass)} className="btn bg-white border-none">
                                         <img className='w-8' src="https://i.postimg.cc/BQLqTJMd/trash-bin.png" alt="" />

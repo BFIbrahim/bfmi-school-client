@@ -4,8 +4,8 @@ import { AuthContext } from '../Providers/AuthProviders'
 
 const SelectedClassData = () => {
     const {user} = useContext(AuthContext)
+
     const { refetch, data: classes = [] } = useQuery({
-        
         queryKey: ['selectedClass', user?.email],
         queryFn: async () => {
             const response = await fetch(`http://localhost:5000/selectedClass?email=${user?.email}`)
