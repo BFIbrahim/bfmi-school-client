@@ -32,6 +32,27 @@ const AllUsers = () => {
             })
     }
 
+    const hundleMakeInstractor = user => {
+        fetch(`http://localhost:5000/users/instractor/${user._id}`, {
+            method: "PATCH"
+        })
+
+            .then(res => res.json())
+            .then(data => {
+                if (data.modifiedCount) {
+                    refetch()
+                    Swal.fire({
+                        position: 'top-end',
+                        icon: 'success',
+                        title: `${user.name} is now an Instractor`,
+                        showConfirmButton: false,
+                        timer: 1500
+                    })
+
+                }
+            })
+    }
+
     return (
         <div className='w-full md:ps-5'>
             <Helmet>
@@ -61,7 +82,7 @@ const AllUsers = () => {
                                 <td>{user.name}</td>
                                 <td>
                                     {
-                                        user.role === 'admin' ? 'admin' :
+                                        user.role === 'admin' ? 'Admin' : user.role === 'instractor'?'Instractor' :
                                             <button className='bg-gray-700 btn-sm rounded-sm text-white hover:bg-gray-700'><FaUser></FaUser></button>
                                     }
                                 </td>
@@ -69,7 +90,7 @@ const AllUsers = () => {
                                     <button onClick={() => hundleMakeAdmin(user)} className="btn btn-sm bg-orange-400 text-white hover:text-black">Make Admin</button>
                                 </td>
                                 <td>
-                                    <button className="btn btn-sm bg-orange-400 text-white hover:text-black">Make Instractor</button>
+                                    <button onClick={() => hundleMakeInstractor(user)} className="btn btn-sm bg-orange-400 text-white hover:text-black">Make Instractor</button>
                                 </td>
                             </tr>)
                         }

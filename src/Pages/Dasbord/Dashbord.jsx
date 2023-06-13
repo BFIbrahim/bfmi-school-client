@@ -2,11 +2,12 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import SelectedClassData from '../../Hooks/SelectedClassData';
 import { NavLink, Outlet } from 'react-router-dom';
-import { FaHome, FaList, FaWallet, FaUser, FaBook, FaCheck, FaUserEdit, FaBookOpen } from 'react-icons/fa';
+import { FaHome, FaList, FaWallet, FaUser, FaBook, FaCheck, FaUserEdit, FaBookOpen, FaListUl } from 'react-icons/fa';
 
 const Dashbord = () => {
 
     const isAdmin = true;
+    const isInstractor = false;
 
 
     const [classes] = SelectedClassData()
@@ -43,6 +44,11 @@ const Dashbord = () => {
                                 <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/myclass'><FaBookOpen></FaBookOpen>Manage Classes</NavLink></li>
 
                                 <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/allusers'><FaUserEdit></FaUserEdit>Manage Users</NavLink></li>
+
+                            </> : isInstractor ? <>
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/myclass'><FaListUl></FaListUl>Add Class</NavLink></li>
+
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/allusers'><FaBook></FaBook>My Classes</NavLink></li>
 
                             </> : <>
 
