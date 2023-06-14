@@ -3,11 +3,14 @@ import { Helmet } from 'react-helmet-async';
 import SelectedClassData from '../../Hooks/SelectedClassData';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaHome, FaList, FaWallet, FaUser, FaBook, FaCheck, FaUserEdit, FaBookOpen, FaListUl } from 'react-icons/fa';
+import useAdmin from '../../Hooks/useAdmin';
 
 const Dashbord = () => {
 
-    const isAdmin = true;
+    // const isAdmin = true;
     const isInstractor = false;
+
+    const [isAdmin] = useAdmin()
 
 
     const [classes] = SelectedClassData()
