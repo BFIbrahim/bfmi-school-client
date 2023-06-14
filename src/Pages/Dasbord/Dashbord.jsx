@@ -4,11 +4,12 @@ import SelectedClassData from '../../Hooks/SelectedClassData';
 import { NavLink, Outlet } from 'react-router-dom';
 import { FaHome, FaList, FaWallet, FaUser, FaBook, FaCheck, FaUserEdit, FaBookOpen, FaListUl } from 'react-icons/fa';
 import useAdmin from '../../Hooks/useAdmin';
+import useInstractor from '../../Hooks/useInstractor';
 
 const Dashbord = () => {
 
     // const isAdmin = true;
-    const isInstractor = false;
+    const [isInstractor] = useInstractor();
 
     const [isAdmin] = useAdmin()
 
