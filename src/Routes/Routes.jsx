@@ -12,6 +12,7 @@ import Dashbord from "../Pages/Dasbord/Dashbord";
 import MyClasses from "../Pages/Dasbord/MyClasses";
 import PrivetRoutes from "./PrivetRoutes";
 import AllUsers from "../Pages/Dasbord/All Users/AllUsers";
+import AddAClass from "../Pages/Dasbord/Add class/AddAClass";
 
 
 export const router = createBrowserRouter([
@@ -56,6 +57,10 @@ export const router = createBrowserRouter([
       {
         path: 'allusers',
         element: <AllUsers></AllUsers>
+      },
+      {
+        path: 'addclass',
+        element:<AddAClass></AddAClass>
       }
     ]
   }

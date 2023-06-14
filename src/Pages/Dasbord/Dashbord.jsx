@@ -50,9 +50,9 @@ const Dashbord = () => {
                                 <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/allusers'><FaUserEdit></FaUserEdit>Manage Users</NavLink></li>
 
                             </> : isInstractor ? <>
-                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/myclass'><FaListUl></FaListUl>Add Class</NavLink></li>
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/addclass'><FaListUl></FaListUl>Add Class</NavLink></li>
 
-                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/allusers'><FaBook></FaBook>My Classes</NavLink></li>
+                                <li className='font-semibold text-[14px] text-white'><NavLink to='/dasbord/myclasses'><FaBook></FaBook>My Classes</NavLink></li>
 
                             </> : <>
 
