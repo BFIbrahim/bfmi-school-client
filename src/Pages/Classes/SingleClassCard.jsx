@@ -13,7 +13,7 @@ const SingleClassCard = ({classes}) => {
     const hundleSelect = (classes) => {
         if (user && user.email) {
             const selectedclass = {selecytrdClass: _id, Name, Image, Instructor_name, Available_seats, Price, email: user.email}
-            fetch('http://localhost:5000/selectedClass', {
+            fetch('https://bf-music-instrument-school-server-bfibrahim.vercel.app/selectedClass', {
                 method: 'POST',
                 headers:{
                     'content-type' : 'application/json'

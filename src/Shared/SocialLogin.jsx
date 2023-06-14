@@ -14,7 +14,7 @@ const SocialLogin = () => {
                 const saveUser = { name: loggedInUser.displayName, email: loggedInUser.email, }
 
 
-                fetch('http://localhost:5000/users', {
+                fetch('https://bf-music-instrument-school-server-bfibrahim.vercel.app/users', {
                     method: 'POST',
                     headers: {
                         'content-type': 'application/json'

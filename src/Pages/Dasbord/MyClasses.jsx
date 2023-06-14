@@ -22,7 +22,7 @@ const MyClasses = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                fetch(`http://localhost:5000/selectedClass/${sClass._id}`, {
+                fetch(`https://bf-music-instrument-school-server-bfibrahim.vercel.app/selectedClass/${sClass._id}`, {
                     method: "DELETE",
                 })
                     .then(res => res.json())

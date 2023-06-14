@@ -9,7 +9,7 @@ const Classes = () => {
     // const [loading, setLoading] = useState(true)
 
     useEffect(() => {
-        fetch('http://localhost:5000/classes')
+        fetch('https://bf-music-instrument-school-server-bfibrahim.vercel.app/classes')
             .then(res => res.json())
             .then(data => {
                 setClasses(data);

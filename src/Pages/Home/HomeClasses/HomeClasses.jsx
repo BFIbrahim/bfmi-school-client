@@ -7,7 +7,7 @@ const HomeClasses = () => {
     const [loading, setLoading] = useState(true)
 
     // useEffect(() => {
-    //     fetch('http://localhost:5000/class')
+    //     fetch('https://bf-music-instrument-school-server-bfibrahim.vercel.app/class')
     //         .then(res => res.json())
     //         .then(data => {
     //             setClasses(data);
@@ -18,7 +18,7 @@ const HomeClasses = () => {
     useEffect(() => {
         const loadedClass = async () => {
           try {
-            const response = await fetch('http://localhost:5000/classes');
+            const response = await fetch('https://bf-music-instrument-school-server-bfibrahim.vercel.app/classes');
             const jsonData = await response.json();
             const sortedClass = jsonData.sort((x, y) => x.Available_seats - y.Available_seats);
             const topSixClass = sortedClass.slice(0, 6);
